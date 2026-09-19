@@ -211,6 +211,103 @@
             el.classList.add('is-animated');
         });
     }
+       // ---------- 8. Before/After Slider ----------
+    const baSliders = document.querySelectorAll('[data-ba-slider]');
+
+    baSliders.forEach(function (slider) {
+        const beforeEl = slider.querySelector('.ba-slider__before');
+        const handleEl = slider.querySelector('.ba-slider__handle');
+
+        if (!beforeEl || !handleEl) return;
+
+        let isDragging = false;
+        let currentPos = 50; // درصد
+
+        // تنظیم موقعیت
+        function setPosition(percent) {
+            // محدود کردن بین 0 تا 100
+            percent = Math.max(0, Math.min(100, percent));
+            currentPos = percent;
+
+            beforeEl.style.width = percent + '%';
+            handleEl.style.left = percent + '%';
+            handleEl.setAttribute('aria-valuenow', Math.round(percent));
+        }
+
+        // دریافت موقعیت از رویداد
+        function getPercentFromEvent(clientX) {
+            const rect = slider.getBoundingClientRect();
+            const x = clientX - rect.left;
+            return (x / rect.width) * 100;
+        }
+
+        // شروع کشیدن
+        function startDrag(e) {
+            isDragging = true;
+            slider.style.cursor = 'grabbing';
+            // اگه کلیک روی handle نبود، موقعیت رو مستقیم ببر
+            if (e.type === 'mousedown' || e.type === 'touchstart') {
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                // فقط اگه داخل خود اسلایدر کلیک شده
+                if (e.target === slider || e.target.closest('.ba-slider__handle')) {
+                    setPosition(getPercentFromEvent(clientX));
+                }
+            }
+            e.preventDefault();
+        }
+
+        // پایان کشیدن
+        function endDrag() {
+            isDragging = false;
+            slider.style.cursor = 'ew-resize';
+        }
+
+        // حرکت
+        function onMove(e) {
+            if (!isDragging) return;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            setPosition(getPercentFromEvent(clientX));
+        }
+
+        // Mouse Events
+        slider.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', endDrag);
+
+        // Touch Events
+        slider.addEventListener('touchstart', startDrag, { passive: false });
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', endDrag);
+
+        // کلیک مستقیم روی اسلایدر (بدون drag)
+        slider.addEventListener('click', function (e) {
+            if (e.target.closest('.ba-slider__handle-btn')) return;
+            if (!isDragging) {
+                setPosition(getPercentFromEvent(e.clientX));
+            }
+        });
+
+        // کیبورد (دسترسی‌پذیری)
+        handleEl.addEventListener('keydown', function (e) {
+            const STEP = 5;
+            if (e.key === 'ArrowLeft') {
+                setPosition(currentPos - STEP);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                setPosition(currentPos + STEP);
+                e.preventDefault();
+            } else if (e.key === 'Home') {
+                setPosition(0);
+                e.preventDefault();
+            } else if (e.key === 'End') {
+                setPosition(100);
+                e.preventDefault();
+            }
+        });
+
+        // مقدار اولیه
+        setPosition(50);
+    });
 })();
 
 
