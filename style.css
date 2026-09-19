@@ -786,3 +786,347 @@ body {
         font-size: 15px;
     }
 }
+/* ============================================================
+   SERVIZI SECTION
+   ============================================================ */
+.servizi {
+    position: relative;
+    padding: 120px 0;
+    background-color: var(--color-cream);
+    overflow: hidden;
+}
+
+/* تزئین پس‌زمینه ملایم */
+.servizi::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 111, 74, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* ---------- Section Header ---------- */
+.servizi__header {
+    max-width: 720px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.servizi__eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-terracotta);
+    margin-bottom: 20px;
+    position: relative;
+    padding: 0 40px;
+}
+
+.servizi__eyebrow::before,
+.servizi__eyebrow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 1px;
+    background-color: var(--color-terracotta);
+    opacity: 0.5;
+}
+
+.servizi__eyebrow::before { left: 0; }
+.servizi__eyebrow::after  { right: 0; }
+
+.servizi__title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: var(--color-brown);
+    margin-bottom: 24px;
+}
+
+.servizi__title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-terracotta);
+}
+
+.servizi__subtitle {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-brown-light);
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* ---------- Grid ---------- */
+.servizi__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+/* ---------- Card ---------- */
+.servizi__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 36px 40px;
+    background-color: var(--color-white);
+    border: 1px solid rgba(62, 44, 35, 0.06);
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+/* نوار رنگی بالای کارت هنگام hover */
+.servizi__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-terracotta), var(--color-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.servizi__card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(201, 111, 74, 0.15);
+}
+
+.servizi__card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Featured Card */
+.servizi__card--featured {
+    background: linear-gradient(180deg, #FBF6EE 0%, var(--color-white) 100%);
+    border-color: rgba(201, 111, 74, 0.2);
+}
+
+.servizi__card-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 12px;
+    background-color: var(--color-terracotta);
+    color: var(--color-white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+
+/* Icon */
+.servizi__card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 28px;
+    border-radius: 18px;
+    background-color: rgba(201, 111, 74, 0.08);
+    color: var(--color-terracotta);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.servizi__card-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.servizi__card:hover .servizi__card-icon {
+    background-color: var(--color-terracotta);
+    color: var(--color-white);
+    transform: rotate(-6deg) scale(1.05);
+}
+
+/* Title */
+.servizi__card-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-brown);
+    margin-bottom: 14px;
+}
+
+/* Text */
+.servizi__card-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-brown-light);
+    margin-bottom: 28px;
+    flex-grow: 1;
+}
+
+/* Link */
+.servizi__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-terracotta);
+    transition: gap 0.3s ease, color 0.3s ease;
+    align-self: flex-start;
+}
+
+.servizi__card-link svg {
+    transition: transform 0.3s ease;
+}
+
+.servizi__card-link:hover {
+    gap: 12px;
+    color: var(--color-terracotta-dark);
+}
+
+.servizi__card-link:hover svg {
+    transform: translateX(2px);
+}
+
+/* ---------- Bottom CTA ---------- */
+.servizi__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(62, 44, 35, 0.08);
+    flex-wrap: wrap;
+}
+
+.servizi__cta p {
+    font-size: 16px;
+    color: var(--color-brown-light);
+    font-weight: 400;
+}
+
+/* ============================================================
+   RESPONSIVE — SERVIZI
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .servizi {
+        padding: 100px 0;
+    }
+
+    .servizi__header {
+        margin-bottom: 60px;
+    }
+
+    .servizi__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+
+    /* کارت سوم (Featured) توی ردیف دوم، وسط قرار بگیره */
+    .servizi__card--featured {
+        grid-column: 1 / -1;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .servizi {
+        padding: 80px 0;
+    }
+
+    .servizi__header {
+        margin-bottom: 48px;
+    }
+
+    .servizi__eyebrow {
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        padding: 0 30px;
+    }
+
+    .servizi__eyebrow::before,
+    .servizi__eyebrow::after {
+        width: 18px;
+    }
+
+    .servizi__title {
+        font-size: clamp(28px, 7vw, 40px);
+        letter-spacing: -0.5px;
+        margin-bottom: 20px;
+    }
+
+    .servizi__subtitle {
+        font-size: 15px;
+    }
+
+    .servizi__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 48px;
+    }
+
+    /* Featured card روی موبایل هم full-width */
+    .servizi__card--featured {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .servizi__card {
+        padding: 36px 28px 32px;
+        border-radius: 20px;
+    }
+
+    .servizi__card-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 22px;
+    }
+
+    .servizi__card-icon svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .servizi__card-title {
+        font-size: 22px;
+    }
+
+    .servizi__card-text {
+        font-size: 14px;
+    }
+
+    .servizi__cta {
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 40px;
+        text-align: center;
+    }
+
+    .servizi__cta .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
