@@ -308,6 +308,127 @@
         // مقدار اولیه
         setPosition(50);
     });
+       // ---------- 9. Testimonianze Slider ----------
+    const tSlider = document.getElementById('testimonianzeSlider');
+    const tDotsContainer = document.getElementById('testimonianzeDots');
+    const tPrev = document.querySelector('.testimonianze__nav--prev');
+    const tNext = document.querySelector('.testimonianze__nav--next');
+
+    if (tSlider && tPrev && tNext) {
+        const cards = tSlider.querySelectorAll('.testimonianze__card');
+        const totalCards = cards.length;
+
+        // ---------- محاسبه تعداد کارت‌های قابل مشاهده ----------
+        function getCardsPerView() {
+            const w = window.innerWidth;
+            if (w <= 768) return 1;
+            if (w <= 992) return 2;
+            return 3;
+        }
+
+        // ---------- ساخت Dots (فقط برای موبایل) ----------
+        function buildDots() {
+            if (!tDotsContainer) return;
+            tDotsContainer.innerHTML = '';
+
+            const cardsPerView = getCardsPerView();
+            if (cardsPerView !== 1) return; // فقط در موبایل
+
+            cards.forEach(function (_, i) {
+                const dot = document.createElement('button');
+                dot.className = 'testimonianze__dot' + (i === 0 ? ' is-active' : '');
+                dot.setAttribute('aria-label', 'Vai alla recensione ' + (i + 1));
+                dot.addEventListener('click', function () {
+                    const cardWidth = cards[0].offsetWidth + 16; // +gap
+                    tSlider.scrollTo({
+                        left: cardWidth * i,
+                        behavior: 'smooth'
+                    });
+                });
+                tDotsContainer.appendChild(dot);
+            });
+        }
+
+        // ---------- به‌روزرسانی Dots ----------
+        function updateDots() {
+            if (!tDotsContainer) return;
+            const dots = tDotsContainer.querySelectorAll('.testimonianze__dot');
+            if (dots.length === 0) return;
+
+            const scrollLeft = tSlider.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 16;
+            const activeIndex = Math.round(scrollLeft / cardWidth);
+
+            dots.forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === activeIndex);
+            });
+        }
+
+        // ---------- به‌روزرسانی دکمه‌های Prev/Next ----------
+        function updateNavButtons() {
+            const scrollLeft = tSlider.scrollLeft;
+            const maxScroll = tSlider.scrollWidth - tSlider.clientWidth;
+
+            tPrev.disabled = scrollLeft <= 5;
+            tNext.disabled = scrollLeft >= maxScroll - 5;
+        }
+
+        // ---------- اسکرول به کارت بعدی/قبلی ----------
+        function scrollByCard(direction) {
+            const cardWidth = cards[0].offsetWidth + 24; // +gap
+            tSlider.scrollBy({
+                left: cardWidth * direction,
+                behavior: 'smooth'
+            });
+        }
+
+        // ---------- رویدادها ----------
+        tPrev.addEventListener('click', function () {
+            scrollByCard(-1);
+        });
+
+        tNext.addEventListener('click', function () {
+            scrollByCard(1);
+        });
+
+        // ---------- مشاهده تغییرات اسکرول ----------
+        let scrollTimer;
+        tSlider.addEventListener('scroll', function () {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(function () {
+                updateDots();
+                updateNavButtons();
+            }, 80);
+        }, { passive: true });
+
+        // ---------- مدیریت تغییر اندازه ----------
+        let resizeT;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeT);
+            resizeT = setTimeout(function () {
+                buildDots();
+                updateDots();
+                updateNavButtons();
+            }, 200);
+        });
+
+        // ---------- پشتیبانی از کیبورد ----------
+        tSlider.setAttribute('tabindex', '0');
+        tSlider.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+                scrollByCard(-1);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                scrollByCard(1);
+                e.preventDefault();
+            }
+        });
+
+        // ---------- راه‌اندازی اولیه ----------
+        buildDots();
+        updateDots();
+        updateNavButtons();
+    }
 })();
 
 
