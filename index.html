@@ -739,6 +739,291 @@
     </div>
 
 </section>
+    <!-- ============ PRENOTAZIONE SECTION ============ -->
+<section class="prenota" id="prenota">
+
+    <!-- Background Decoration -->
+    <div class="prenota__bg" aria-hidden="true">
+        <div class="prenota__bg-circle prenota__bg-circle--1"></div>
+        <div class="prenota__bg-circle prenota__bg-circle--2"></div>
+    </div>
+
+    <div class="container prenota__container">
+
+        <div class="prenota__grid">
+
+            <!-- ==================== LEFT: Info ==================== -->
+            <div class="prenota__info">
+
+                <span class="prenota__eyebrow" data-animate="fade-up">
+                    Prenota la Tua Consulenza
+                </span>
+
+                <h2 class="prenota__title" data-animate="fade-up" data-delay="100">
+                    Pronta a Scoprire<br>
+                    <em>i Tuoi Ricci?</em>
+                </h2>
+
+                <p class="prenota__lead" data-animate="fade-up" data-delay="200">
+                    Prenota ora la tua consulenza personalizzata.
+                    Ti ricontatteremo entro 24 ore per confermare
+                    l'appuntamento.
+                </p>
+
+                <!-- Contact Info -->
+                <ul class="prenota__contacts" data-animate="fade-up" data-delay="300">
+
+                    <li class="prenota__contact">
+                        <div class="prenota__contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="prenota__contact-text">
+                            <span>Telefono</span>
+                            <a href="tel:+390000000000">+39 000 000 0000</a>
+                        </div>
+                    </li>
+
+                    <li class="prenota__contact">
+                        <div class="prenota__contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="prenota__contact-text">
+                            <span>Email</span>
+                            <a href="mailto:info@estroverso.it">info@estroverso.it</a>
+                        </div>
+                    </li>
+
+                    <li class="prenota__contact">
+                        <div class="prenota__contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="prenota__contact-text">
+                            <span>Indirizzo</span>
+                            <strong>Via Roma 00, Città</strong>
+                        </div>
+                    </li>
+
+                    <li class="prenota__contact">
+                        <div class="prenota__contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="prenota__contact-text">
+                            <span>Orari</span>
+                            <strong>Lun–Ven 9:00–19:00 · Sab 9:00–14:00</strong>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <!-- Trust Badges -->
+                <div class="prenota__trust" data-animate="fade-up" data-delay="400">
+                    <div class="prenota__trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                        Risposta entro 24h
+                    </div>
+                    <div class="prenota__trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4"></path>
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                        Consulenza gratuita
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================== RIGHT: Form ==================== -->
+            <div class="prenota__form-wrapper" data-animate="fade-up" data-delay="200">
+
+                <form class="prenota__form" id="prenotaForm" novalidate>
+
+                    <div class="prenota__form-header">
+                        <h3>Richiedi un Appuntamento</h3>
+                        <p>Compila il modulo e ti ricontatteremo a breve.</p>
+                    </div>
+
+                    <!-- Nome -->
+                    <div class="prenota__field">
+                        <label for="nome" class="prenota__label">
+                            Nome e Cognome <span aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            class="prenota__input"
+                            placeholder="Es. Maria Rossi"
+                            required
+                            autocomplete="name"
+                            minlength="2"
+                        >
+                        <span class="prenota__error" role="alert" aria-live="polite"></span>
+                    </div>
+
+                    <!-- Email + Telefono (2 colonne) -->
+                    <div class="prenota__row">
+
+                        <div class="prenota__field">
+                            <label for="email" class="prenota__label">
+                                Email <span aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="prenota__input"
+                                placeholder="mariarossi@email.it"
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="prenota__error" role="alert" aria-live="polite"></span>
+                        </div>
+
+                        <div class="prenota__field">
+                            <label for="telefono" class="prenota__label">
+                                Telefono <span aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                id="telefono"
+                                name="telefono"
+                                class="prenota__input"
+                                placeholder="+39 333 000 0000"
+                                required
+                                autocomplete="tel"
+                            >
+                            <span class="prenota__error" role="alert" aria-live="polite"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Servizio + Data (2 colonne) -->
+                    <div class="prenota__row">
+
+                        <div class="prenota__field">
+                            <label for="servizio" class="prenota__label">
+                                Servizio <span aria-hidden="true">*</span>
+                            </label>
+                            <select id="servizio" name="servizio" class="prenota__input prenota__select" required>
+                                <option value="">Seleziona un servizio…</option>
+                                <option value="taglio-curly">Taglio Curly</option>
+                                <option value="trattamento-idratante">Trattamento Idratante</option>
+                                <option value="styling-naturale">Styling Naturale</option>
+                                <option value="curlys-way">Curly's Way Corner</option>
+                                <option value="consulenza">Consulenza Personalizzata</option>
+                            </select>
+                            <span class="prenota__error" role="alert" aria-live="polite"></span>
+                        </div>
+
+                        <div class="prenota__field">
+                            <label for="data" class="prenota__label">
+                                Data preferita
+                            </label>
+                            <input
+                                type="date"
+                                id="data"
+                                name="data"
+                                class="prenota__input"
+                                min=""
+                            >
+                            <span class="prenota__error" role="alert" aria-live="polite"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Messaggio -->
+                    <div class="prenota__field">
+                        <label for="messaggio" class="prenota__label">
+                            Messaggio <span class="prenota__optional">(facoltativo)</span>
+                        </label>
+                        <textarea
+                            id="messaggio"
+                            name="messaggio"
+                            class="prenota__input prenota__textarea"
+                            placeholder="Raccontaci qualcosa sui tuoi capelli…"
+                            rows="4"
+                            maxlength="500"
+                        ></textarea>
+                        <div class="prenota__char-count">
+                            <span id="charCount">0</span> / 500
+                        </div>
+                    </div>
+
+                    <!-- Privacy -->
+                    <div class="prenota__field prenota__field--checkbox">
+                        <label class="prenota__checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="prenota__checkbox-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                            <span class="prenota__checkbox-text">
+                                Accetto la <a href="#" target="_blank" rel="noopener">Privacy Policy</a> e il trattamento dei dati personali. <span aria-hidden="true">*</span>
+                            </span>
+                        </label>
+                        <span class="prenota__error" role="alert" aria-live="polite"></span>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn--primary btn--lg prenota__submit" id="submitBtn">
+                        <span class="prenota__submit-text">Invia Richiesta</span>
+                        <span class="prenota__submit-loading" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <circle cx="12" cy="12" r="10" opacity="0.25"></circle>
+                                <path d="M12 2a10 10 0 0 1 10 10"></path>
+                            </svg>
+                        </span>
+                        <svg class="prenota__submit-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+
+                    <!-- Success Message -->
+                    <div class="prenota__success" id="formSuccess" role="status" aria-live="polite">
+                        <div class="prenota__success-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h4>Richiesta Inviata!</h4>
+                        <p>Grazie! Ti ricontatteremo entro 24 ore per confermare il tuo appuntamento.</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="prenota__form-error" id="formError" role="alert" aria-live="assertive">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>Qualcosa è andato storto. Riprova più tardi o contattaci telefonicamente.</span>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
     <!-- Overlay for mobile menu -->
     <div class="overlay" id="overlay"></div>
 
