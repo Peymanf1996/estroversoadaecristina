@@ -174,7 +174,43 @@
     if (prefersReducedMotion && heroBg) {
         heroBg.style.animation = 'none';
     }
+       // ---------- 7. Animate elements on scroll (Servizi, ecc.) ----------
+    const animatedElements = document.querySelectorAll('[data-animate="fade-up"]');
 
+    if ('IntersectionObserver' in window && animatedElements.length > 0) {
+        // ابتدا عناصر داخل hero رو نادیده بگیر (چون از قبل با CSS انیمیت میشن)
+        const heroElements = document.querySelectorAll('.hero [data-animate]');
+
+        heroElements.forEach(function (el) {
+            el.classList.add('is-animated');
+        });
+
+        const animationObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || '0';
+                    entry.target.style.animationDelay = (parseInt(delay) / 1000) + 's';
+                    entry.target.classList.add('is-animated');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        animatedElements.forEach(function (el) {
+            // فقط عناصری که توی hero نیستن رو observe کن
+            if (!el.closest('.hero')) {
+                animationObserver.observe(el);
+            }
+        });
+    } else {
+        // Fallback: اگه IntersectionObserver پشتیبانی نشد
+        animatedElements.forEach(function (el) {
+            el.classList.add('is-animated');
+        });
+    }
 })();
 
 
