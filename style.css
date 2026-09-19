@@ -688,13 +688,19 @@ body {
 [data-animate="fade-up"] {
     opacity: 0;
     transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* عناصر داخل Hero از همان ابتدا انیمیت میشن */
+.hero [data-animate="fade-up"] {
     animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-[data-delay="100"] { animation-delay: 0.1s; }
-[data-delay="200"] { animation-delay: 0.2s; }
-[data-delay="300"] { animation-delay: 0.3s; }
-[data-delay="400"] { animation-delay: 0.4s; }
+[data-animate="fade-up"].is-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 @keyframes fadeUp {
     to {
@@ -702,7 +708,6 @@ body {
         transform: translateY(0);
     }
 }
-
 /* ============================================================
    RESPONSIVE — HERO
    ============================================================ */
