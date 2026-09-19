@@ -429,6 +429,250 @@
         updateDots();
         updateNavButtons();
     }
+       // ---------- 10. Prenotazione Form — Validation & Submit ----------
+    const prenotaForm = document.getElementById('prenotaForm');
+
+    if (prenotaForm) {
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('formSuccess');
+        const errorMsg = document.getElementById('formError');
+        const messaggioField = document.getElementById('messaggio');
+        const charCount = document.getElementById('charCount');
+        const dataField = document.getElementById('data');
+
+        // ---------- تنظیم حداقل تاریخ = امروز ----------
+        if (dataField) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            dataField.min = `${yyyy}-${mm}-${dd}`;
+        }
+
+        // ---------- شمارنده کاراکتر ----------
+        if (messaggioField && charCount) {
+            messaggioField.addEventListener('input', function () {
+                charCount.textContent = this.value.length;
+                if (this.value.length > 450) {
+                    charCount.style.color = '#FCA5A5';
+                } else {
+                    charCount.style.color = '';
+                }
+            });
+        }
+
+        // ---------- پیام‌های خطا به ایتالیایی ----------
+        const errorMessages = {
+            nome: {
+                valueMissing: 'Inserisci il tuo nome e cognome.',
+                tooShort: 'Il nome deve contenere almeno 2 caratteri.'
+            },
+            email: {
+                valueMissing: 'Inserisci la tua email.',
+                typeMismatch: 'Inserisci un indirizzo email valido.'
+            },
+            telefono: {
+                valueMissing: 'Inserisci il tuo numero di telefono.',
+                patternMismatch: 'Inserisci un numero di telefono valido.'
+            },
+            servizio: {
+                valueMissing: 'Seleziona un servizio.'
+            },
+            privacy: {
+                valueMissing: 'Devi accettare la Privacy Policy per continuare.'
+            }
+        };
+
+        // ---------- نمایش خطا برای یک فیلد ----------
+        function showError(field, message) {
+            const fieldWrapper = field.closest('.prenota__field');
+            if (!fieldWrapper) return;
+
+            fieldWrapper.classList.add('has-error');
+            fieldWrapper.classList.remove('has-success');
+
+            const errorSpan = fieldWrapper.querySelector('.prenota__error');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+            }
+        }
+
+        // ---------- پاک کردن خطا ----------
+        function clearError(field) {
+            const fieldWrapper = field.closest('.prenota__field');
+            if (!fieldWrapper) return;
+
+            fieldWrapper.classList.remove('has-error');
+            const errorSpan = fieldWrapper.querySelector('.prenota__error');
+            if (errorSpan) {
+                errorSpan.textContent = '';
+            }
+        }
+
+        // ---------- نشان دادن حالت موفق ----------
+        function showSuccess(field) {
+            const fieldWrapper = field.closest('.prenota__field');
+            if (!fieldWrapper) return;
+            fieldWrapper.classList.add('has-success');
+            fieldWrapper.classList.remove('has-error');
+        }
+
+        // ---------- اعتبارسنجی یک فیلد ----------
+        function validateField(field) {
+            if (!field.checkValidity()) {
+                const errors = errorMessages[field.name] || {};
+                let message = '';
+
+                // بررسی نوع خطا
+                if (field.validity.valueMissing) {
+                    message = errors.valueMissing || 'Questo campo è obbligatorio.';
+                } else if (field.validity.typeMismatch) {
+                    message = errors.typeMismatch || 'Formato non valido.';
+                } else if (field.validity.tooShort) {
+                    message = errors.tooShort || 'Il valore è troppo corto.';
+                } else if (field.validity.patternMismatch) {
+                    message = errors.patternMismatch || 'Formato non valido.';
+                } else {
+                    message = field.validationMessage || 'Campo non valido.';
+                }
+
+                showError(field, message);
+                return false;
+            }
+
+            clearError(field);
+            if (field.value.trim()) {
+                showSuccess(field);
+            }
+            return true;
+        }
+
+        // ---------- اعتبارسنجی لحظه‌ای ----------
+        const fieldsToValidate = prenotaForm.querySelectorAll('input[required], select[required], textarea[required]');
+
+        fieldsToValidate.forEach(function (field) {
+            // در لحظه از دست دادن فوکوس
+            field.addEventListener('blur', function () {
+                validateField(field);
+            });
+
+            // هنگام تایپ — خطا رو پاک کن
+            field.addEventListener('input', function () {
+                const fieldWrapper = field.closest('.prenota__field');
+                if (fieldWrapper && fieldWrapper.classList.contains('has-error')) {
+                    validateField(field);
+                }
+            });
+
+            // برای select و checkbox
+            field.addEventListener('change', function () {
+                const fieldWrapper = field.closest('.prenota__field');
+                if (fieldWrapper && fieldWrapper.classList.contains('has-error')) {
+                    validateField(field);
+                }
+            });
+        });
+
+        // ---------- اعتبارسنجی همه فیلدها ----------
+        function validateAll() {
+            let allValid = true;
+            let firstInvalid = null;
+
+            fieldsToValidate.forEach(function (field) {
+                if (!validateField(field)) {
+                    allValid = false;
+                    if (!firstInvalid) firstInvalid = field;
+                }
+            });
+
+            if (firstInvalid) {
+                firstInvalid.focus();
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            return allValid;
+        }
+
+        // ---------- ارسال فرم ----------
+        prenotaForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // مخفی کردن پیام خطای قبلی
+            errorMsg.classList.remove('is-visible');
+
+            // اعتبارسنجی
+            if (!validateAll()) {
+                return;
+            }
+
+            // شروع حالت loading
+            submitBtn.classList.add('is-loading');
+            submitBtn.disabled = true;
+
+            // جمع‌آوری داده‌ها
+            const formData = new FormData(prenotaForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // ---------- اینجا رو با API واقعی جایگزین کن ----------
+            // مثال ۱: Formspree
+            // const response = await fetch('https://formspree.io/f/YOUR_ID', {
+            //     method: 'POST',
+            //     body: formData,
+            //     headers: { 'Accept': 'application/json' }
+            // });
+
+            // مثال ۲: Netlify Forms (فقط data-netlify="true" به فرم اضافه کن)
+            // const response = await fetch('/', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            //     body: new URLSearchParams(formData).toString()
+            // });
+
+            // ---------- شبیه‌سازی ارسال (برای تست) ----------
+            try {
+                await new Promise(function (resolve) { setTimeout(resolve, 1500); });
+
+                // لاگ داده‌ها (برای debug)
+                console.log('Form data:', data);
+
+                // نمایش پیام موفقیت
+                prenotaForm.querySelectorAll('.prenota__field, .prenota__form-header, .prenota__submit').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+                successMsg.classList.add('is-visible');
+
+                // اسکرول به پیام موفقیت
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // ---------- اختیاری: ریست فرم بعد از ۵ ثانیه ----------
+                // setTimeout(function () {
+                //     prenotaForm.reset();
+                //     location.reload();
+                // }, 5000);
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+
+                // نمایش پیام خطا
+                errorMsg.classList.add('is-visible');
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } finally {
+                // پایان حالت loading
+                submitBtn.classList.remove('is-loading');
+                submitBtn.disabled = false;
+            }
+        });
+
+        // ---------- بهبود UX: پاک کردن خطا با Escape ----------
+        prenotaForm.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                prenotaForm.querySelectorAll('.prenota__field.has-error').forEach(function (field) {
+                    field.classList.remove('has-error');
+                });
+            }
+        });
+    }
 })();
 
 
