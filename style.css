@@ -2560,4 +2560,34 @@ body {
     .testimonianze__cta-icon {
         width: 48px;
         height: 48px;
-        border
+        border-radius: 14px;
+    }
+
+    .testimonianze__cta-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .testimonianze__cta-text strong {
+        font-size: 18px;
+    }
+
+    .testimonianze__cta-text span {
+        font-size: 13px;
+    }
+
+    .testimonianze__cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .testimonianze__card {
+        flex: 0 0 92%;
+    }
+
+    .testimonianze__text {
+        font-size: 13px;
+    }
+}
