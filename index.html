@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estroverso | Specialisti Capelli Ricci</title>
+    <meta name="description" content="Estroverso - Salone specializzato nel taglio e nella cura dei capelli ricci. Oltre 1000 clienti soddisfatti.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header" id="header">
+        <div class="container header__container">
+
+            <!-- Logo -->
+            <a href="#" class="header__logo" aria-label="Estroverso Home">
+                <span class="header__logo-text">Estroverso</span>
+                <span class="header__logo-sub">Capelli Ricci</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="header__nav" id="nav" aria-label="Menu principale">
+                <ul class="header__menu">
+                    <li><a href="#servizi" class="header__link">Servizi</a></li>
+                    <li><a href="#chi-siamo" class="header__link">Chi Siamo</a></li>
+                    <li><a href="#curly-way" class="header__link">Curly's Way</a></li>
+                    <li><a href="#gallery" class="header__link">Gallery</a></li>
+                    <li><a href="#contatti" class="header__link">Contatti</a></li>
+                </ul>
+
+                <!-- CTA inside mobile menu -->
+                <a href="#prenota" class="btn btn--primary header__cta-mobile">Prenota Ora</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <a href="#prenota" class="btn btn--primary header__cta-desktop">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Prenota Ora
+            </a>
+
+            <!-- Hamburger -->
+            <button class="header__toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="nav">
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+            </button>
+
+        </div>
+    </header>
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero" id="hero">
+    
+        <!-- Background Image -->
+        <div class="hero__bg" aria-hidden="true">
+            <img
+                src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop"
+                alt=""
+                class="hero__bg-img"
+                loading="eager"
+            >
+            <div class="hero__bg-overlay"></div>
+        </div>
+    
+        <!-- Content -->
+        <div class="container hero__container">
+            <div class="hero__content">
+            
+                <!-- Badge -->
+                <div class="hero__badge" data-animate="fade-up">
+                    <span class="hero__badge-dot"></span>
+                    Specialisti Capelli Ricci in Italia
+                </div>
+            
+                <!-- Title -->
+                <h1 class="hero__title" data-animate="fade-up" data-delay="100">
+                    I Tuoi Ricci,<br>
+                    <em>Finalmente Capiti.</em>
+                </h1>
+            
+                <!-- Subtitle -->
+                <p class="hero__subtitle" data-animate="fade-up" data-delay="200">
+                    Ogni riccio ha una forma, un ritmo, una personalità.
+                    Il nostro lavoro è valorizzarlo, non cambiarlo.
+                </p>
+            
+                <!-- CTA Buttons -->
+                <div class="hero__actions" data-animate="fade-up" data-delay="300">
+                    <a href="#prenota" class="btn btn--primary btn--lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        Prenota Ora
+                    </a>
+                
+                    <a href="#servizi" class="btn btn--ghost btn--lg">
+                        Scopri di più
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            
+                <!-- Social Proof -->
+                <div class="hero__social-proof" data-animate="fade-up" data-delay="400">
+                    <div class="hero__stars" aria-label="Valutazione 5 stelle su 5">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="hero__social-text">
+                        <strong>Oltre 1000 clienti soddisfatti</strong>
+                        <span>· Recensioni verificate</span>
+                    </p>
+                </div>
+            
+            </div>
+        </div>
+    
+        <!-- Scroll Down -->
+        <a href="#servizi" class="hero__scroll" aria-label="Scorri verso il basso">
+            <span class="hero__scroll-text">Scorri</span>
+            <span class="hero__scroll-line"></span>
+        </a>
+    
+    </section>
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ============ DEMO HERO (فقط برای تست اسکرول) ============ -->
+    <section class="hero-demo">
+        <h1>I Tuoi Ricci, Finalmente Capiti.</h1>
+        <p>Specialisti nel taglio e nella cura dei capelli ricci.</p>
+    </section>
+
+    <section class="spacer"></section>
+
+    <script src="script.js"></script>
+</body>
+</html>
