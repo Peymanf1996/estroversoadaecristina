@@ -2591,3 +2591,684 @@ body {
         font-size: 13px;
     }
 }
+/* ============================================================
+   PRENOTAZIONE SECTION
+   ============================================================ */
+.prenota {
+    position: relative;
+    padding: 120px 0;
+    background-color: #2A1F18;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.prenota::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+/* Background Circles */
+.prenota__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.prenota__bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+}
+
+.prenota__bg-circle--1 {
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: var(--color-terracotta);
+    opacity: 0.15;
+}
+
+.prenota__bg-circle--2 {
+    bottom: -150px;
+    left: -150px;
+    width: 450px;
+    height: 450px;
+    background: var(--color-gold);
+    opacity: 0.10;
+}
+
+.prenota__container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- Grid ---------- */
+.prenota__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 72px;
+    align-items: start;
+}
+
+/* ============================================================
+   LEFT — Info
+   ============================================================ */
+.prenota__info {
+    color: var(--color-white);
+    padding-top: 12px;
+}
+
+.prenota__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+    padding: 8px 18px;
+    background-color: rgba(212, 168, 83, 0.10);
+    border: 1px solid rgba(212, 168, 83, 0.25);
+    border-radius: 50px;
+}
+
+.prenota__eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    box-shadow: 0 0 12px var(--color-gold);
+}
+
+.prenota__title {
+    font-family: var(--font-heading);
+    font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    color: var(--color-white);
+    margin-bottom: 24px;
+}
+
+.prenota__title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-gold);
+}
+
+.prenota__lead {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 44px;
+    max-width: 480px;
+}
+
+/* ---------- Contacts List ---------- */
+.prenota__contacts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+.prenota__contact {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.prenota__contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-gold);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.prenota__contact-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.prenota__contact:hover .prenota__contact-icon {
+    background-color: rgba(212, 168, 83, 0.15);
+    border-color: rgba(212, 168, 83, 0.35);
+    transform: scale(1.05);
+}
+
+.prenota__contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.prenota__contact-text span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.prenota__contact-text a,
+.prenota__contact-text strong {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.prenota__contact-text a:hover {
+    color: var(--color-gold);
+}
+
+/* ---------- Trust ---------- */
+.prenota__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prenota__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.prenota__trust-item svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   RIGHT — Form
+   ============================================================ */
+.prenota__form-wrapper {
+    position: relative;
+}
+
+.prenota__form {
+    position: relative;
+    padding: 44px 40px 40px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: 28px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.prenota__form-header {
+    margin-bottom: 32px;
+}
+
+.prenota__form-header h3 {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.prenota__form-header p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+/* ---------- Field ---------- */
+.prenota__field {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.prenota__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 8px;
+}
+
+.prenota__label span[aria-hidden="true"] {
+    color: var(--color-gold);
+    margin-left: 2px;
+}
+
+.prenota__optional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+}
+
+/* ---------- Input ---------- */
+.prenota__input {
+    width: 100%;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.25s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.prenota__input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.prenota__input:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.prenota__input:focus {
+    border-color: var(--color-gold);
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.12);
+}
+
+/* حالت خطا */
+.prenota__field.has-error .prenota__input {
+    border-color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+.prenota__field.has-error .prenota__input:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+/* حالت موفق */
+.prenota__field.has-success .prenota__input {
+    border-color: #4ADE80;
+}
+
+/* ---------- Select ---------- */
+.prenota__select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A853' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 48px;
+}
+
+.prenota__select option {
+    background-color: #2A1F18;
+    color: var(--color-white);
+}
+
+/* ---------- Textarea ---------- */
+.prenota__textarea {
+    resize: vertical;
+    min-height: 110px;
+    font-family: var(--font-body);
+}
+
+.prenota__char-count {
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 6px;
+}
+
+/* ---------- Row (2 colonne) ---------- */
+.prenota__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* ---------- Error message ---------- */
+.prenota__error {
+    display: none;
+    font-size: 12px;
+    color: #FCA5A5;
+    margin-top: 6px;
+    font-weight: 400;
+}
+
+.prenota__field.has-error .prenota__error {
+    display: block;
+    animation: shakeError 0.3s ease;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-4px); }
+    75%      { transform: translateX(4px); }
+}
+
+/* ---------- Checkbox ---------- */
+.prenota__field--checkbox {
+    margin-top: 4px;
+}
+
+.prenota__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.prenota__checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.prenota__checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.04);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s ease;
+}
+
+.prenota__checkbox-box svg {
+    width: 14px;
+    height: 14px;
+    color: var(--color-white);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+}
+
+.prenota__checkbox-label input:checked + .prenota__checkbox-box {
+    background-color: var(--color-terracotta);
+    border-color: var(--color-terracotta);
+}
+
+.prenota__checkbox-label input:checked + .prenota__checkbox-box svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.prenota__checkbox-label input:focus-visible + .prenota__checkbox-box {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+}
+
+.prenota__checkbox-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.prenota__checkbox-text a {
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.prenota__checkbox-text a:hover {
+    color: var(--color-white);
+}
+
+/* ---------- Submit Button ---------- */
+.prenota__submit {
+    width: 100%;
+    padding: 18px 32px;
+    font-size: 14px;
+    margin-top: 8px;
+    position: relative;
+    gap: 10px;
+}
+
+.prenota__submit-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.prenota__submit-loading svg {
+    width: 20px;
+    height: 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.prenota__submit-arrow {
+    transition: transform 0.3s ease;
+}
+
+.prenota__submit:hover .prenota__submit-arrow {
+    transform: translateX(4px);
+}
+
+/* حالت در حال ارسال */
+.prenota__submit.is-loading {
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.prenota__submit.is-loading .prenota__submit-text,
+.prenota__submit.is-loading .prenota__submit-arrow {
+    display: none;
+}
+
+.prenota__submit.is-loading .prenota__submit-loading {
+    display: flex;
+}
+
+/* ---------- Success Message ---------- */
+.prenota__success {
+    display: none;
+    text-align: center;
+    padding: 32px 20px;
+    animation: successIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.prenota__success.is-visible {
+    display: block;
+}
+
+@keyframes successIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.prenota__success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: rgba(74, 222, 128, 0.15);
+    border: 2px solid rgba(74, 222, 128, 0.4);
+    color: #4ADE80;
+}
+
+.prenota__success-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.prenota__success h4 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 10px;
+}
+
+.prenota__success p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+/* ---------- Form Error Message ---------- */
+.prenota__form-error {
+    display: none;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    font-size: 13px;
+    color: #FCA5A5;
+    line-height: 1.5;
+}
+
+.prenota__form-error.is-visible {
+    display: flex;
+}
+
+.prenota__form-error svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ============================================================
+   RESPONSIVE — PRENOTAZIONE
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .prenota {
+        padding: 100px 0;
+    }
+
+    .prenota__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .prenota__info {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .prenota__eyebrow,
+    .prenota__lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .prenota__contacts {
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 36px;
+        text-align: left;
+    }
+
+    .prenota__trust {
+        justify-content: center;
+    }
+
+    .prenota__form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .prenota {
+        padding: 80px 0;
+    }
+
+    .prenota__grid {
+        gap: 40px;
+    }
+
+    .prenota__eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        padding: 7px 14px;
+    }
+
+    .prenota__title {
+        font-size: clamp(30px, 8vw, 44px);
+        letter-spacing: -1px;
+        margin-bottom: 20px;
+    }
+
+    .prenota__lead {
+        font-size: 15px;
+        margin-bottom: 36px;
+    }
+
+    .prenota__contacts {
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .prenota__contact-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+    }
+
+    .prenota__contact-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .prenota__contact-text a,
+    .prenota__contact-text strong {
+        font-size: 
