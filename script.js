@@ -673,6 +673,50 @@
             }
         });
     }
+       // ---------- 11. Footer — Current Year ----------
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // ---------- 12. Back to Top Button ----------
+    const backToTop = document.getElementById('backToTop');
+
+    if (backToTop) {
+        // نمایش/مخفی کردن دکمه هنگام اسکرول
+        let backToTopTicking = false;
+
+        function handleBackToTop() {
+            const scrollY = window.scrollY;
+            const showAfter = window.innerHeight * 1.5;
+
+            if (scrollY > showAfter) {
+                backToTop.classList.add('is-visible');
+            } else {
+                backToTop.classList.remove('is-visible');
+            }
+
+            backToTopTicking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!backToTopTicking) {
+                window.requestAnimationFrame(handleBackToTop);
+                backToTopTicking = true;
+            }
+        }, { passive: true });
+
+        // کلیک روی دکمه
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // بررسی اولیه
+        handleBackToTop();
+    }
 })();
 
 
